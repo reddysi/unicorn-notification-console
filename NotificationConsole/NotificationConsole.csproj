@@ -5,4 +5,14 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Devart.Data.Oracle" Version="9.6.570" />
+    <PackageReference Include="FubarCoder.RestSharp.Portable.HttpClient" Version="4.0.8" />
+    <PackageReference Include="Hangfire.AspNetCore" Version="1.6.20" />
+    <PackageReference Include="Hangfire.PostgreSql" Version="1.4.8.2" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.2" />
+    <PackageReference Include="Wow.Logging.Serilog" Version="0.1.18" />
+    <PackageReference Include="Wow.Notification.Api.Shared" Version="0.1.9" />
+  </ItemGroup>
+
 </Project>
