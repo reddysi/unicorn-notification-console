@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  notificationconsole:
+    image: notificationconsole:dev
+    build:
+      target: base
+    #environment:
+      #- NUGET_FALLBACK_PACKAGES=$container_paths_to_fallback_packages_notificationconsole$
+    volumes:
+      - C:\Users\kettebr\source\repos\NotificationConsole\NotificationConsole:/app
+      - C:\Users\kettebr\vsdbg\vs2017u5:/remote_debugger:ro
+#$nuget_volume_mapping_notificationconsole$
+    entrypoint: tail -f /dev/null
+    labels:
+      com.microsoft.visualstudio.debuggee.program: "dotnet"
+      #com.microsoft.visualstudio.debuggee.arguments: " $debuggee_arguments_probing_paths_notificationconsole$ bin/Debug/netcoreapp2.1/NotificationConsole.dll"
+      com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
+      com.microsoft.visualstudio.debuggee.killprogram: "/bin/bash -c \"if PID=$$(pidof -x dotnet); then kill $$PID; fi\""

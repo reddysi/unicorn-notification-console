@@ -1,0 +1,11 @@
+c:\users\kettebr\source\repos\NotificationConsole\NotificationConsole\bin\Debug\netcoreapp2.1\NotificationConsole.deps.json
+c:\users\kettebr\source\repos\NotificationConsole\NotificationConsole\bin\Debug\netcoreapp2.1\NotificationConsole.runtimeconfig.json
+c:\users\kettebr\source\repos\NotificationConsole\NotificationConsole\bin\Debug\netcoreapp2.1\NotificationConsole.runtimeconfig.dev.json
+c:\users\kettebr\source\repos\NotificationConsole\NotificationConsole\bin\Debug\netcoreapp2.1\NotificationConsole.dll
+c:\users\kettebr\source\repos\NotificationConsole\NotificationConsole\obj\Debug\netcoreapp2.1\NotificationConsole.csprojAssemblyReference.cache
+c:\users\kettebr\source\repos\NotificationConsole\NotificationConsole\obj\Debug\netcoreapp2.1\NotificationConsole.csproj.CoreCompileInputs.cache
+c:\users\kettebr\source\repos\NotificationConsole\NotificationConsole\obj\Debug\netcoreapp2.1\NotificationConsole.AssemblyInfoInputs.cache
+c:\users\kettebr\source\repos\NotificationConsole\NotificationConsole\obj\Debug\netcoreapp2.1\NotificationConsole.AssemblyInfo.cs
+c:\users\kettebr\source\repos\NotificationConsole\NotificationConsole\bin\Debug\netcoreapp2.1\NotificationConsole.pdb
+c:\users\kettebr\source\repos\NotificationConsole\NotificationConsole\obj\Debug\netcoreapp2.1\NotificationConsole.dll
+c:\users\kettebr\source\repos\NotificationConsole\NotificationConsole\obj\Debug\netcoreapp2.1\NotificationConsole.pdb

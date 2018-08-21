@@ -1,0 +1,7 @@
+services:
+  notificationconsole:
+    build:
+      context: C:\Users\kettebr\source\repos\NotificationConsole
+      dockerfile: NotificationConsole/Dockerfile
+    image: notificationconsole
+version: '3.4'
