@@ -44,18 +44,21 @@ namespace Wow.Mailers.Unicorn.Implementation
                 var builder = new OracleConnectionStringBuilder();
                 builder.Direct = true;
                 builder.Server = Configuration["Oracle:Server"];
-                builder.Sid = Configuration["Oracle:Sid"];
+                //builder.Sid = Configuration["Oracle:Sid"];
+                builder.ServiceName = Configuration["Oracle:Sid"];
                 builder.UserId = Configuration["Oracle:UserId"];
                 builder.Password = Configuration["Oracle:Password"];
+                builder.Port = 1521;
                 builder.LicenseKey = Configuration["Oracle:LicenseKey"]; //@"trial:C:/Tools/Devart.Data.Oracle.key";
 
                 OracleConnection connection = new OracleConnection(builder.ConnectionString);
                 connection.Open();
 
-                var maxSerialNo = GetMaxSerialNo(connection);
-                string query = "select /*+ index(acc, pk_account) */ mast.EMAILSUBJECT,det.SERIALNO, det.TO_LIST, det.CC_LIST, det.BCC_LIST, det.TEMPLATECODE,dbms_lob.substr(det.BODY,32000,1) as MSGBODY, det.MSGSOURCE, det.STATUS, det.ACCOUNTNO , addr.corpid, mast.SENDERSEMAILID, mast.TEMPLATEID from uniprod.intf_emailmaster mast join uniprod.intf_emaildetails det on mast.TEMPLATECODE = det.templatecode left outer join uniprod.cc_account acc on det.accountno = acc.accountno left outer join uniprod.sa_addressmaster addr on acc.address3 = addr.addressid where  det.STATUS = 2"; //and det.SERIALNO < "
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      //+ maxSerialNo
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      //+ " order by det.serialno desc";
+                //var maxSerialNo = GetMaxSerialNo(connection);
+                var maxSerialNo = 0;
+                string query = "select /*+ index(acc, pk_account) */ mast.EMAILSUBJECT,det.SERIALNO, det.TO_LIST, det.CC_LIST, det.BCC_LIST, det.TEMPLATECODE,dbms_lob.substr(det.BODY,32000,1) as MSGBODY, det.MSGSOURCE, det.STATUS, det.ACCOUNTNO , addr.corpid, mast.SENDERSEMAILID, mast.TEMPLATEID from uniprod.intf_emailmaster mast join uniprod.intf_emaildetails det on mast.TEMPLATECODE = det.templatecode left outer join uniprod.cc_account acc on det.accountno = acc.accountno left outer join uniprod.sa_addressmaster addr on acc.address3 = addr.addressid where  det.STATUS = 0"; //and det.SERIALNO < "
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      //+ maxSerialNo
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      //+ " ";
 
                 OracleCommand command = connection.CreateCommand();
                 command.CommandType = CommandType.Text;
@@ -96,7 +99,7 @@ namespace Wow.Mailers.Unicorn.Implementation
 
                             string msgBody = reader["MSGBODY"].ToString();
                             //msgBody = msgBody.Replace("#EBILLLINK#", url);
-                            msgBody = msgBody.Replace("\n", "<br>");
+                           msgBody = msgBody.Replace("\n", "<br>");
 
                             string encryptedEmail = Encrypt3DES(connection, "em=" + toAddress + "&ac=" + accountNumber);
                             encryptedEmail = HttpUtility.UrlEncode(encryptedEmail);
@@ -340,7 +343,7 @@ namespace Wow.Mailers.Unicorn.Implementation
         {
             Log.Error("Error in Unicorn Mailer" + "||" + dataToWrite["Method"] + "||" +
                       dataToWrite["Parameters"] + "||" + dataToWrite["Result"] + "||" +
-                      dataToWrite["AccountNo"] + "||" + dataToWrite["BillGroup"] + "||" + dataToWrite["BillCycle"] +
+                      dataToWrite["AccountNo"] + "||" + "0" + "||" + "0" +
                        "||" + dataToWrite["AddressId"] + "||" + dataToWrite["Email"] + "||" + dataToWrite["ServerName"] +
                        "||" + dataToWrite["startTime"] + "||" + dataToWrite["EndTime"]);
 

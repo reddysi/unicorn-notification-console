@@ -58,7 +58,7 @@ namespace Wow.Mailers.Unicorn.Implementation
             var client = new RestClient(new Uri(OauthTokenUrl));
             var request = new RestRequest(Method.POST);
             //request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
-            request.AddHeader("ContentType", "text/xml");
+            request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
             request.AddHeader("cache-control", "no-cache");
             request.AddParameter("grant_type", "client_credentials");
             request.AddParameter("client_secret", SharedSecret);

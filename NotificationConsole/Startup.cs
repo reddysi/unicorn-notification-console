@@ -17,7 +17,7 @@ namespace Wow.Mailers.Unicorn
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("Config/appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile($"./Config/appSettings.json", optional: false, reloadOnChange: true)
                 .AddJsonFile($"Config/appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
